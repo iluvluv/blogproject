@@ -1,0 +1,41 @@
+{% extends 'head.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% block head %}
+        <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            }  
+        .main{
+           text-align: center;
+        }
+        #select{
+            text-align: right;
+        }
+        .operate{
+        display: grid; 
+        grid-template-columns: repeat(20, 2fr);
+        grid-auto-rows: 20px;
+        }
+    </style>
+{% endblock %}
+</head>
+<body>
+        {% block content %}
+        <meta charset="UTF-8">
+    <div class="main">
+    <form action="{% url 'savedata' %}" method="POST">
+        {% csrf_token %}
+        <h5>title:<input type= "text" name = "title"><br></h5>
+        <div class="operate"><h5>body:</div><textarea name="body" id="" cols="210%" rows="50%"></textarea></h5><br>
+        <div id="select"><input type="submit" value="저장"></div>
+    </form>
+</div>
+{% endblock %}
+</body>
+</html>

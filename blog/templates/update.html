@@ -1,0 +1,20 @@
+{% extends 'head.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <form action="{% url 'update' blog.id %}">
+        <input name= "title" type="text" value="{{blog.title}}">
+        <textarea name="body" id="" cols="210%" rows="50%"></textarea>
+        <input type="submit" value="저장">
+    </form>
+    {% endblock %}
+</div>
+</body>
+</html>

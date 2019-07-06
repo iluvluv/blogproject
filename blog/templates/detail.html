@@ -1,0 +1,64 @@
+{% extends 'head.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h2{
+            color:white;
+        }
+        body{
+            background-color: black;
+            color: white;
+            }  
+        .main{
+           text-align: center;
+        }
+        #select{
+            text-align: right;
+        }
+        .operate{
+        display: grid; 
+        grid-template-columns: repeat(20, 2fr);
+        grid-auto-rows: 20px;
+        }
+    </style>
+    {% endblock %}
+</head>
+<body> 
+        {% block content %}
+    <form action="{% url 'detail' blog.id %}">
+            {% if blog.image.url is not None %}
+            <img src="{{ blog.image.url}}" alt="" width="300px">  
+            {% endif %}
+        <h2>title:{{blog.title}}</h2>
+        <h3>body:{{blog.body}}</h4>
+        <h5>time:{{blog.time}}</h6>
+    </form>
+    
+    
+    <form action="{% url 'comment_save' blog.id %}">
+            <div class="operate"><h5></div><textarea name="content" id="" cols="210%" rows="15%"></textarea></h5><br>
+            <div id="select"><input type="submit" value="댓글저장"></div>
+    </form>
+
+   {% for comment in comments %}
+   <p>-----------------------------------------------------------------------------------------------------</p>
+   <h2>content:{{comment.content}}</h2>
+   {% if blog.image.url is not None %}
+   <img src="{{ comment.image.url}}" alt="" width="300px">  
+   {% endif %}
+   <h4>time:{{comment.time}}</h2>
+   <a href="{% url 'comment_update_page' comment.id %}"><button>수정하기</button></a>
+   <a href="{% url 'comment_delete' comment.id %}"><button>삭제하기</button></a>
+    <p>----------------------------------------------------------------------------------------------------</p>
+   {% endfor %}
+
+   
+
+</div>
+{% endblock %}
+</body>
+</html>

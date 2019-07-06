@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'comment_update' comments.id %}">
+        <textarea name="content" id="" cols="210%" rows="15%">{{comments.content}}</textarea>
+        <input type="submit" value="저장">
+    </form>
+    
+    
+</div>
+</body>
+</html>

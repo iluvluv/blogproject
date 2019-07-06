@@ -1,0 +1,42 @@
+{% extends 'head.html' %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        {% block head %}
+        <meta charset="UTF-8">
+        <title>Blog</title>
+        <style>
+        h4{
+                text-align: left;
+                overflow: hidden; 
+                text-overflow: ellipsis;
+                white-space  : nowrap;
+                width        : 500px; 
+            }
+        </style>
+           {% endblock %}
+       </head>
+<body>
+  {% block content %}
+<h1>Blog</h1>
+<a href="{% url 'input' %}">
+<div id="button"><button>글쓰기</button></a></div>    
+
+
+{% for blog in blogs %}
+<div class="all">
+<dic class="text">
+ 
+  <h2>title:{{blog.title}}</h2>
+  <div id="content"><h4>body:{{blog.body}}</h4></div>
+  <h6>time:{{blog.time}}</h6></div>
+  <a href="{% url 'detail' blog.id %}"><button>자세히보기</button></a>
+  <a href="{% url 'update_page' blog.id %}"><button>수정하기</button></a>
+  <a href="{% url 'delete' blog.id %}"><button>삭제하기</button></a>
+</div>
+{% endfor %}
+{% endblock %}
+</head>
+</body>
+</html>
